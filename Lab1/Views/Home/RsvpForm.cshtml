@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegForm</title>
+</head>
+<body>
+    <div> 
+        <form method="post">
+            <label>Your name:</label>
+            <input type="text" name="name" />
+            <br />
+            <label>Your email:</label>
+            <input type="email" name="email" />
+            <br />
+            <label>Your phone:</label>
+            <input type="text" name="phone"/>
+            <br />
+            <label>Will you attend?</label>
+            <select name="attend">
+                <option disabled value="" selected>Choose an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <br />
+            <input type="submit" name="submit" value="Submit RSVP" />
+        </form>
+    </div>
+</body>
+</html>
