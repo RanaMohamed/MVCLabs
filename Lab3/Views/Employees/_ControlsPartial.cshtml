@@ -1,0 +1,7 @@
+﻿@model int
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="@Url.Action("Details", new { id = Model })" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+        <a href="@Url.Action("Edit", new { id = Model })" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+        <a href="@Url.Action("Delete", new { id = Model })" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+    </div>
