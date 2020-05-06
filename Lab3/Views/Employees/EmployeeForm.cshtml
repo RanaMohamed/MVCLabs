@@ -1,0 +1,13 @@
+﻿@model Employee
+@{
+    ViewBag.Title = ViewBag.Action + " Employee";
+}
+
+<h2 class="my-3">@ViewBag.Action Employee</h2>
+
+<form method="post">
+
+    @Html.Partial("_EmployeeFormPartial", Model)
+
+    <input type="submit" value="@ViewBag.Action" class="btn btn-primary" />
+</form>

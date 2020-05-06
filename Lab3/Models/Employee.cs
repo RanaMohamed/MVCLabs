@@ -28,7 +28,8 @@ namespace Lab3.Models
 
         [Required]
         [Range(5000, 50000)]
-        public double Salary { get; set; }
+        [DataType(DataType.Currency)]
+        public double? Salary { get; set; }
 
         [MaxLength(256)]
         public string Address { get; set; }

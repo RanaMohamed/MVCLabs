@@ -1,13 +1,41 @@
-﻿@model List<Employee>
+﻿@model EmployeeViewModel
 @{
     ViewBag.Title = "Employees";
 }
 
 <h2 class="my-3">Employees</h2>
 
-<a href="@Url.Action("Add")" class="btn btn-primary">
+@*<a href="@Url.Action("Add")" class="btn btn-primary">
+        <i class="fa fa-plus"></i> Add Employee
+    </a>*@
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#employeeModal">
     <i class="fa fa-plus"></i> Add Employee
-</a>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        @using (Ajax.BeginForm("AddAjax", new AjaxOptions { OnSuccess = "onSuccess", UpdateTargetId = "tbody", InsertionMode = InsertionMode.InsertAfter, OnFailure = "onFailure" }))
+        {
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="employeeModalLabel">Add Employee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    @Html.Partial("_EmployeeFormPartial", Model.Employee)
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
 <hr />
 
@@ -22,10 +50,41 @@
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (Employee employee in Model)
+    <tbody id="tbody">
+        @foreach (Employee employee in Model.Employees)
         {
             @Html.Partial("_EmployeePartial", employee)
         }
     </tbody>
 </table>
+
+
+
+@section Scripts {
+    <script>
+        function deleteEmployee(id) {
+            $.ajax(`@Url.Action("DeleteAjax")/${id}`, {
+                type: "POST",
+                success: function (response) {
+                    if (response) {
+                        $(`#${id}`).remove();
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
+
+        function onSuccess(data) {
+            if (data) {
+                $("#form0")[0].reset()
+                $("#employeeModal").modal('hide');
+            }
+        }
+
+        function onFailure(error) {
+            $("#modal-body").html(error.responseText);
+        }
+    </script>
+}

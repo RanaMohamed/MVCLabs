@@ -1,7 +1,30 @@
 ﻿@model int
 
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="@Url.Action("Details", new { id = Model })" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
-        <a href="@Url.Action("Edit", new { id = Model })" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-        <a href="@Url.Action("Delete", new { id = Model })" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a href="@Url.Action("Details", new { id = Model })" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+    <a href="@Url.Action("Edit", new { id = Model })" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+    <a href="/" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-@Model"><i class="fa fa-trash"></i></a>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal-@Model" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Employee</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button onclick="deleteEmployee(@Model)" type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                @*<a href="@Url.Action("Delete", new { id = Model })" class="btn btn-primary">Yes</a>*@
+            </div>
+        </div>
     </div>
+</div>

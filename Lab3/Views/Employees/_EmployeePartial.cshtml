@@ -1,9 +1,9 @@
 ﻿@model Employee
 
-<tr>
+<tr id="@Model.Id">
     <td>@Model.Name</td>
-    <td>@Model.Email</td>
-    <td>@Model.Salary</td>
+    <td>@Html.DisplayFor(e => e.Email)</td>
+    <td>@Html.DisplayFor(e => e.Salary)</td>
     <td>@Model.Address</td>
     <td>@Model.Gender</td>
     <td>@Html.Partial("_ControlsPartial", Model.Id)</td>
