@@ -7,13 +7,13 @@ namespace Lab3.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class genderbyte : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(genderbyte));
         
         string IMigrationMetadata.Id
         {
-            get { return "202005052048577_Initial"; }
+            get { return "202005071138231_gender byte"; }
         }
         
         string IMigrationMetadata.Source

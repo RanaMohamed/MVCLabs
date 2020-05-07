@@ -16,6 +16,13 @@ namespace Lab3.Models
         public string Name { get; set; }
 
         [Required]
+        [ForeignKey("Department")]
+        [Display(Name = "Department")]
+        public int FK_DepartmentId { get; set; }
+
+        public virtual Department Department { get; set; }
+
+        [Required]
         [EmailAddress]
         [Index(IsUnique = true)]
         [MaxLength(50)]
@@ -24,6 +31,7 @@ namespace Lab3.Models
         [Required]
         [MinLength(8)]
         [MaxLength(12)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required]
@@ -31,7 +39,12 @@ namespace Lab3.Models
         [DataType(DataType.Currency)]
         public double? Salary { get; set; }
 
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
         [MaxLength(256)]
+        [DataType(DataType.MultilineText)]
         public string Address { get; set; }
 
         [Required]

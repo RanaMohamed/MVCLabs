@@ -7,11 +7,13 @@
 
 <div class="card" style="width: 18rem;">
     <div class="card-body">
-        <h5 class="card-title">@Model.Name</h5>
-        <h6 class="card-subtitle mb-2 text-muted">@Model.Email</h6>
-        <p class="card-text">Salary: @Model.Salary</p>
-        <p class="card-text">Gender: @Model.Gender</p>
-        <p class="card-text">Address: @Model.Address</p>
+        <h5 class="card-title">@Html.DisplayFor(e => e.Name)</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(e => e.Email)</h6>
+        <p class="card-text">@Html.DisplayNameFor(e => e.Department): @Html.DisplayFor(e => e.Department.Name)</p>
+        <p class="card-text">@Html.DisplayNameFor(e => e.PhoneNumber): @Html.DisplayFor(e => e.PhoneNumber)</p>
+        <p class="card-text">@Html.DisplayNameFor(e => e.Salary): @Html.DisplayFor(e => e.Salary)</p>
+        <p class="card-text">@Html.DisplayNameFor(e => e.Gender): @Html.DisplayFor(e => e.Gender)</p>
+        <p class="card-text">@Html.DisplayNameFor(e => e.Address): @Html.DisplayFor(e => e.Address)</p>
     </div>
 </div>
 

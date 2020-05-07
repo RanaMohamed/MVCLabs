@@ -35,12 +35,10 @@
     <div class="container pb-3">
         @RenderBody()
     </div>
+  
+    @System.Web.Optimization.Scripts.Render("~/Bundles/scripts")
 
-    <script src="~/Scripts/jquery-3.5.0.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
     @RenderSection("Scripts", false);
 </body>
 </html>

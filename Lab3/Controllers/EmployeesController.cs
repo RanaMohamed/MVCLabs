@@ -18,14 +18,14 @@ namespace Lab3.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View(new EmployeeViewModel { Employees =  ctx.Employees.ToList() , Employee = new Employee()});
+            return View(new EmployeeViewModel { Employees =  ctx.Employees.ToList() , Employee = new Employee(), Departments = ctx.Departments.ToList()});
         }
 
         [HttpGet]
         public ActionResult Add()
         {
             ViewBag.Action = "Add";
-            return View("EmployeeForm");
+            return View("EmployeeForm", new EmployeeViewModel { Departments = ctx.Departments.ToList()});
         }
 
         [HttpPost]
@@ -42,13 +42,13 @@ namespace Lab3.Controllers
                 catch
                 {
                     ModelState.AddModelError("Email", "Email Address is already in use");
-                    return View("EmployeeForm");
+                    return View("EmployeeForm",  new EmployeeViewModel { Departments = ctx.Departments.ToList() });
                 }
 
                 return RedirectToAction(nameof(Index));
             }
 
-            return View("EmployeeForm");
+            return View("EmployeeForm", new EmployeeViewModel { Departments = ctx.Departments.ToList() });
         }
 
         [HttpPost]
@@ -65,21 +65,21 @@ namespace Lab3.Controllers
                 catch
                 {
                     ModelState.AddModelError("Email", "Email Address is already in use");
-                    return PartialView("_EmployeeFormPartial", employee);
+                    return PartialView("_EmployeeFormPartial",  new EmployeeViewModel { Departments = ctx.Departments.ToList() , Employee = employee} );
                 }
 
                 Response.StatusCode = 200;
-                return PartialView("_EmployeePartial", employee);
+                return PartialView("_EmployeePartial", new EmployeeViewModel { Departments = ctx.Departments.ToList(), Employee = employee });
             }
 
-            return PartialView("_EmployeeFormPartial", employee);
+            return PartialView("_EmployeeFormPartial", new EmployeeViewModel { Departments = ctx.Departments.ToList(), Employee = employee });
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            return View("EmployeeForm", ctx.Employees.FirstOrDefault(emp => emp.Id == id));
+            return View("EmployeeForm", new EmployeeViewModel { Departments = ctx.Departments.ToList(), Employee = ctx.Employees.FirstOrDefault(emp => emp.Id == id) } );
         }
 
         [HttpPost]
@@ -97,12 +97,12 @@ namespace Lab3.Controllers
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("Email", "Email Address is already in use");
-                    return View("EmployeeForm", employee);
+                    return View("EmployeeForm", new EmployeeViewModel { Departments = ctx.Departments.ToList(), Employee = employee });
                 }
 
                 return RedirectToAction(nameof(Index));
             }
-            return View("EmployeeForm", employee);
+            return View("EmployeeForm", new EmployeeViewModel { Departments = ctx.Departments.ToList(), Employee = employee });
         }
     
         [HttpGet]

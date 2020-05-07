@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Lab3.Models
 {
-    public enum Gender
+    public enum Gender : Byte
     {
         Male,
         Female

@@ -8,6 +8,7 @@ namespace Lab3.ViewModels
 {
     public class EmployeeViewModel
     {
+        public List<Department> Departments { get; set; }
         public List<Employee> Employees { get; set; }
 
         public Employee Employee { get; set; }

@@ -1,10 +1,12 @@
 ﻿@model Employee
 
-<tr id="@Model.Id">
-    <td>@Model.Name</td>
-    <td>@Html.DisplayFor(e => e.Email)</td>
-    <td>@Html.DisplayFor(e => e.Salary)</td>
-    <td>@Model.Address</td>
-    <td>@Model.Gender</td>
-    <td>@Html.Partial("_ControlsPartial", Model.Id)</td>
-</tr>
+    <tr id="@Model.Id">
+        <td>@Html.DisplayFor(e=> e.Name)</td>
+        <td>@Html.DisplayFor(e => e.Department.Name)</td>
+        <td>@Html.DisplayFor(e => e.PhoneNumber)</td>
+        <td>@Html.DisplayFor(e => e.Email)</td>
+        <td>@Html.DisplayFor(e => e.Salary)</td>
+        <td>@Html.DisplayFor(e => e.Address)</td>
+        <td>@Html.DisplayFor(e => e.Gender)</td>
+        <td>@Html.Partial("_ControlsPartial", Model.Id)</td>
+    </tr>
