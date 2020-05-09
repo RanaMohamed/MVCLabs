@@ -1,5 +1,12 @@
 ﻿@model EmployeeViewModel
 
+@if (ViewBag.Action == "Edit")
+{
+    @Html.HiddenFor(e => e.Employee.Id)
+}
+
+
+
 <div class="form-group">
     @Html.LabelFor(e => e.Employee.Name)
     @Html.EditorFor(e => e.Employee.Name, new { htmlAttributes = new { @class = "form-control" } })
